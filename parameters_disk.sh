@@ -8,7 +8,7 @@ last_line=$(($last_line-2)) # AJUSTA PARA REMOVER LINHAS EM BRANCO
 for line in $(seq $first_line $last_line)
 do 
   element=$(smartctl -a /dev/sda | head -$line | tail -1 | awk '{print $2}') # DEVOLVE NOME DO ELEMENTO
-  set -A data '$element'
+  data[$line]="$element"
 done
 
-echo $data
+echo ${data[@]}
