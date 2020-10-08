@@ -12,7 +12,7 @@ do
 done
 #echo ${data[@]}
 # MONTA JSON PARA ENVIO AO ZABBIX
-template='{"#PARAMETER":"%s"},\n'
+template='{"{#PARAMETER}":"%s"},\n'
 json_string=$(printf "$template" "${data[@]}")
 json_string=$(printf '{"data": ['"${json_string[@]}"']}')
 echo $json_string
