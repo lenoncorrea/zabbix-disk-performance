@@ -13,7 +13,7 @@ done
 #echo ${data[@]}
 
 template='{"#PARAMETER":"%s"}\n'
-json_string=$("$template" "${data[@]}")
+json_string=$(printf "$template" "${data[@]},")
 
-json_string=$({"data": $json_string})
+json_string=$(printf '{"data": ['"{$json_string[@]}"']}')
 echo $json_string
