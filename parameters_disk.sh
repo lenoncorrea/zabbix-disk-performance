@@ -12,10 +12,9 @@ do
 done
 #echo ${data[@]}
 
-for element in $elements
-do
-  data = [{"{#PARAMETER}": $element} 
-done
+template='{"#PARAMETER":"%s"}\n'
+json_string=$(printf "template" "${data[@]})
+echo $json_string
+
 # data = [{"{#DEVICENAME}": device} for device in devices]
 # print(json.dumps({"data": data}, indent=4))
-echo ${data[@]}
