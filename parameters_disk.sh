@@ -8,11 +8,7 @@ last_line=$(($last_line-2)) # AJUSTA PARA REMOVER LINHAS EM BRANCO
 for line in $(seq $first_line $last_line)
 do 
   elements=$(sudo smartctl -a /dev/$disk | head -$line | tail -1 | awk '{print $2}') # DEVOLVE NOME DO ELEMENTO
-  data[$line]="$elements"
+  data="$data,"'{"{#PARAMETER}":"'$elements'"}'
 done
-#echo ${data[@]}
-# MONTA JSON PARA ENVIO AO ZABBIX
-template='{"{#PARAMETER}":"%s"},\n'
-json_string=$(printf "$template" "${data[@]}")
-json_string=$(printf '{"data": ['"${json_string[@]}"']}')
-echo $json_string
+
+echo '{"data":['${data#,}' ]}'
