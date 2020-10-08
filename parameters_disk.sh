@@ -5,7 +5,7 @@ last_line=$(smartctl -a /dev/sda | grep -i -n -w "SMART Error Log Version" | cut
 
 for line in $(seq $first_line $last_line)
 do 
-  echo $line
+  element=$(smartctl -a /dev/sda | head -$line | tail -1 | awk '{print $2}') # DEVOLVE NOME DO ELEMENTO
+  echo $element
 done
 
-#smartctl -a /dev/sda | head -54 | tail -1 | awk '{print $2}' # DEVOLVE NOME DO ELEMENTE
