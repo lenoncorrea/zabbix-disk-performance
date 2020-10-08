@@ -15,6 +15,3 @@ done
 template='{"#PARAMETER":"%s"}\n'
 json_string=$(printf "template" "${data[@]})
 echo $json_string
-
-# data = [{"{#DEVICENAME}": device} for device in devices]
-# print(json.dumps({"data": data}, indent=4))
