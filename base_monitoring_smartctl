@@ -17,8 +17,8 @@ SMART support is: Enabled                                           # smartctl -
 === START OF READ SMART DATA SECTION ===
 SMART overall-health self-assessment test result: PASSED            # smartctl -a /dev/sda | grep 'SMART overall-health self-assessment test result' | cut -f2 -d ":"
 
-ID# ATTRIBUTE_NAME          FLAG     VALUE WORST THRESH TYPE      UPDATED  WHEN_FAILED RAW_VALUE
-  1 Raw_Read_Error_Rate     0x0032   100   100   000    Old_age   Always       -       0                                # smartctl -a /dev/sda | grep 'Raw_Read_Error_Rate' | cut -f2 -d ":"
+ID# ATTRIBUTE_NAME          FLAG     VALUE WORST THRESH TYPE      UPDATED  WHEN_FAILED RAW_VALUE                        # smartctl -a /dev/sda | grep -i -n -w "ATTRIBUTE_NAME" | cut -f1 -d ":" # DEVOLVE NUMERO DA LINHA: 53
+  1 Raw_Read_Error_Rate     0x0032   100   100   000    Old_age   Always       -       0                                # smartctl -a /dev/sda | head -54 | tail -1 | awk '{print $2}' # DEVOLVE NOME DO ELEMENTE
   9 Power_On_Hours          0x0032   100   100   000    Old_age   Always       -       470                              # ID              # smartctl -a /dev/sda | grep 'Raw_Read_Error_Rate' | awk '{print $1}'
  12 Power_Cycle_Count       0x0032   100   100   000    Old_age   Always       -       50                               # ATTRIBUTE_NAME  # smartctl -a /dev/sda | grep 'Raw_Read_Error_Rate' | awk '{print $2}'
 148 Unknown_Attribute       0x0000   255   255   000    Old_age   Offline      -       0                                # FLAG            # smartctl -a /dev/sda | grep 'Raw_Read_Error_Rate' | awk '{print $3}'
