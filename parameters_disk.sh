@@ -1,6 +1,6 @@
 #!/bin/bash
 
-disks=$(lsblk -dp | grep -o '^/dev[^ ]*' | cut -f3 -d "/")
+disks=$(sudo lsblk -dp | grep -o '^/dev[^ ]*' | cut -f3 -d "/")
 for disk in $disks
 do
 # disk=$1
