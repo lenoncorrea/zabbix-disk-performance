@@ -19,4 +19,5 @@ do
 done
 
 echo '{"data":[{"{#DISK}":"'$disk'"},{"{#MODEL}": "'$device_model'"},{"{#SERIAL}": "'$serial_number'"},{"{#CAPACITY}": "'$disk_capacity'"},'${data#,}']}'
+exit
 done
