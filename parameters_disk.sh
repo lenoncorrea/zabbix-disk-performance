@@ -17,7 +17,6 @@ do
   elements=$(sudo smartctl -a /dev/$disk | head -$line | tail -1 | awk '{print $2}') # DEVOLVE NOME DO ELEMENTO
   data="$data,"'{"{#PARAMETER}":"'$elements'"}'
 done
-
-echo '{"data":[{"{#DISK}":"'$disk'"},{"{#MODEL}": "'$device_model'"},{"{#SERIAL}": "'$serial_number'"},{"{#CAPACITY}": "'$disk_capacity'"},'${data#,}']}'
+echo '{"data":[{"disco": [{"{#DISK}":"'$disk'"},{"{#MODEL}": "'$device_model'"},{"{#SERIAL}": "'$serial_number'"},{"{#CAPACITY}": "'$disk_capacity'"},]},{"parameters": ['${data#,}']}]}'
 exit
 done
