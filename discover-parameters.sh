@@ -10,7 +10,7 @@ device_model=$(sudo /usr/sbin/smartctl -a /dev/$disk | grep 'Device Model' | cut
 # disk_capacity=$(sudo /usr/sbin/smartctl -a /dev/$disk | grep 'User Capacity' | cut -f2 -d ":" | cut -f2 -d "[" | cut -f1 -d "]")
 
 if [[ $device_model -eq "KINGSTON" ]]
-do
+then
   echo $device_model
 fi
 
