@@ -3,7 +3,7 @@ import os
 import json
 import re
 
-os.system("echo "" > /etc/zabbix/zabbix_agentd.d/zabbix-disk-performance/disks.txt")
+os.system("rm /etc/zabbix/zabbix_agentd.d/zabbix-disk-performance/disks.txt")
 disks = []
 def remove_number(devices):
     for device in devices:
