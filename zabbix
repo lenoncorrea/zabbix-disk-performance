@@ -1,4 +1,3 @@
 ## PASTE IN /etc/sudoers.d/zabbix
 Defaults:zabbix !requiretty
 zabbix ALL= (ALL) NOPASSWD: /usr/sbin/smartctl
-zabbix ALL= (ALL) NOPASSWD: /usr/bin/lsblk
