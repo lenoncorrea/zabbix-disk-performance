@@ -9,12 +9,12 @@ device_model=$(sudo /usr/sbin/smartctl -a /dev/$disk | grep 'Device Model' | cut
 # serial_number=$(sudo /usr/sbin/smartctl -a /dev/$disk | grep 'Serial Number' | cut -f2 -d ":")
 # disk_capacity=$(sudo /usr/sbin/smartctl -a /dev/$disk | grep 'User Capacity' | cut -f2 -d ":" | cut -f2 -d "[" | cut -f1 -d "]")
 
-if [[ $device_model -eq "KINGSTON" ]]
+if [[ $device_model == "KINGSTON" ]]
 then
   value=$(sudo /usr/sbin/smartctl -a /dev/$disk | grep "SSD_Life_Left" | awk '{print $$10}')
   echo $device_model
   exit
-elif [[ $device_model -eq "ST1000DM003-1CH162" ]]
+elif [[ $device_model == "ST1000DM003-1CH162" ]]
 then
   value=$(sudo /usr/sbin/smartctl -a /dev/$disk | grep "Load_Cycle_Count" | awk '{print $$10}')
   echo $device_model
