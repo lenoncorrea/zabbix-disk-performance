@@ -22,3 +22,4 @@ if __name__ == "__main__":
     print(json.dumps({"data": data}, indent=4))
     for device in devices:
         os.system("echo {} >> /etc/zabbix/zabbix_agentd.d/zabbix-disk-performance/disks.txt".format(device))
+    os.system("bash /etc/zabbix/disks-stats/parameters_disk.sh")
