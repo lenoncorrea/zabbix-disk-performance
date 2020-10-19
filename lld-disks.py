@@ -13,7 +13,7 @@ def remove_number(devices):
     return(disks)
 
 if __name__ == "__main__":
-    skippable = ("sr", "loop", "ram")
+    skippable = ("sr", "loop", "ram","dm")
     devices = (device for device in os.listdir("/sys/class/block")
                if not any(ignore in device for ignore in skippable))
     devices = remove_number(devices)
