@@ -15,5 +15,6 @@ do
   elements=$(sudo smartctl -a /dev/$disk | head -$line | tail -1 | awk '{print $2}') # DEVOLVE NOME DO ELEMENTO
   value=$(sudo smartctl -a /dev/"$disk" | grep "$elements" | awk '{print $10}') # DEVOLVE VALOR DO ELEMENTO
   data="$data,"'{"{#PARAMETER}":"'$elements'"}'
+done
 done < /etc/zabbix/zabbix_agentd.d/zabbix-disk-performance/disks.txt
 echo '{"data":[{"disco": [{"{#DISK}":"'$disk'"},{"{#MODEL}": "'$device_model'"},{"{#SERIAL}": "'$serial_number'"},{"{#CAPACITY}": "'$disk_capacity'"},]},{"parameters": ['${data#,}']}]}' >> /etc/zabbix/zabbix_agentd.d/zabbix-disk-performance/$disk
