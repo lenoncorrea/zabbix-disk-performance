@@ -9,9 +9,10 @@ device_model=$(sudo /usr/sbin/smartctl -a /dev/$disk | grep 'Device Model' | cut
 # serial_number=$(sudo /usr/sbin/smartctl -a /dev/$disk | grep 'Serial Number' | cut -f2 -d ":")
 # disk_capacity=$(sudo /usr/sbin/smartctl -a /dev/$disk | grep 'User Capacity' | cut -f2 -d ":" | cut -f2 -d "[" | cut -f1 -d "]")
 
-case  $device_model -eq "KINGSTON"
+if [[ $device_model -eq "KINGSTON" ]]
+do
   echo $device_model
-esac
+fi
 
 # for line in $(seq $first_line $last_line)
 # do 
