@@ -15,6 +15,7 @@ then
   echo $device_model
   exit
 elif [[ $device_model -eq "ST1000DM003-1CH162" ]]
+then
   value=$(sudo /usr/sbin/smartctl -a /dev/$disk | grep "Load_Cycle_Count" | awk '{print $$10}')
   echo $device_model
   exit
