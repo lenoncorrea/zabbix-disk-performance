@@ -19,6 +19,9 @@ then
   value=$(sudo /usr/sbin/smartctl -a /dev/$disk | grep "Load_Cycle_Count" | awk '{print $$10}')
   echo $device_model
   exit
+else
+  echo "Not value for disk"
+  exit
 fi
 
 # for line in $(seq $first_line $last_line)
