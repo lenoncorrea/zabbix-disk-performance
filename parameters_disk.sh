@@ -1,9 +1,6 @@
 #!/bin/bash
 
-disks=$(sudo /usr/bin/lsblk -dp | grep -o '^/dev[^ ]*' | cut -f3 -d "/")
-for disk in $disks
-do
-# disk=$1
+disk=$1
 first_line=$(sudo /usr/sbin/smartctl -a /dev/$disk | grep -i -n -w "ATTRIBUTE_NAME" | cut -f1 -d ":") # DEVOLVE NUMERO DA LINHA ONDE COMEÇAM PARAMETROS
 first_line=$(($first_line+1)) # AJUSTA PARA PEGAR PRIMEIRO PARAMETRO
 last_line=$(sudo /usr/sbin/smartctl -a /dev/$disk | grep -i -n -w "SMART Error Log Version" | cut -f1 -d ":") # DEVOLVE NUMERO DA LINHA ONDE TERMINAM PARAMETROS
@@ -17,5 +14,4 @@ do
   elements=$(sudo smartctl -a /dev/$disk | head -$line | tail -1 | awk '{print $2}') # DEVOLVE NOME DO ELEMENTO
   data="$data,"'{"{#PARAMETER}":"'$elements'"}'
 done
-echo '{"data":[{"disco": [{"{#DISK}":"'$disk'"},{"{#MODEL}": "'$device_model'"},{"{#SERIAL}": "'$serial_number'"},{"{#CAPACITY}": "'$disk_capacity'"},]},{"parameters": ['${data#,}']}]}'
-done
+echo '{"data":[{"disco": [{"{#DISK}":"'$disk'"},{"{#MODEL}": "'$device_model'"},{"{#SERIAL}": "'$serial_number'"},{"{#CAPACITY}": "'$disk_capacity'"},]},{"parameters": ['${data#,}']}]}' > $disk.txt
