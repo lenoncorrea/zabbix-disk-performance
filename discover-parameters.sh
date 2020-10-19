@@ -11,7 +11,13 @@ device_model=$(sudo /usr/sbin/smartctl -a /dev/$disk | grep 'Device Model' | cut
 
 if [[ $device_model -eq "KINGSTON" ]]
 then
+  value=$(sudo /usr/sbin/smartctl -a /dev/$disk | grep "SSD_Life_Left" | awk '{print $$10}')
   echo $device_model
+  exit
+elif [[ $device_model -eq "ST1000DM003-1CH162" ]]
+  value=$(sudo /usr/sbin/smartctl -a /dev/$disk | grep "Load_Cycle_Count" | awk '{print $$10}')
+  echo $device_model
+  exit
 fi
 
 # for line in $(seq $first_line $last_line)
