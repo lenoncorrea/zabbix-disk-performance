@@ -18,5 +18,4 @@ do
   data="$data,"'{"{#PARAMETER}":"'$elements'"}'
 done
 echo '{"data":[{"disco": [{"{#DISK}":"'$disk'"},{"{#MODEL}": "'$device_model'"},{"{#SERIAL}": "'$serial_number'"},{"{#CAPACITY}": "'$disk_capacity'"},]},{"parameters": ['${data#,}']}]}'
-exit
 done
