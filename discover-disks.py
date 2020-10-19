@@ -17,5 +17,9 @@ if __name__ == "__main__":
     devices = (device for device in os.listdir("/sys/class/block")
                if not any(ignore in device for ignore in skippable))
     devices = remove_number(devices)
-    data = [{"{#DEVICENAME}": device} for device in devices]
-    print(json.dumps({"data": data}, indent=4))
+    file = open("/etc/zabbix/zabbix_agentd.d/zabbix-disk-performance/disks.txt","w")
+    for device in devices:
+        file.write(device)
+    file.close()
+    # data = [{"{#DEVICENAME}": device} for device in devices]
+    # print(json.dumps({"data": data}, indent=4))
