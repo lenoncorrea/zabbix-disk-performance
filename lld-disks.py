@@ -20,4 +20,4 @@ if __name__ == "__main__":
     # data = [{"{#DEVICENAME}": device} for device in devices]
     # print(json.dumps({"data": data}, indent=4))
     for device in devices:
-        os.system("bash /etc/zabbix/zabbix_agentd.d/zabbix-disk-performance/parameters_disk.sh {}".format(device), shell=True)
+        os.system("bash /etc/zabbix/zabbix_agentd.d/zabbix-disk-performance/parameters_disk.sh {}".format(device))
