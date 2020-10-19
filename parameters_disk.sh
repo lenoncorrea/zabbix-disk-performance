@@ -15,4 +15,4 @@ do
   value=$(sudo smartctl -a /dev/"$disk" | grep "$elements" | awk '{print $10}') # DEVOLVE VALOR DO ELEMENTO
   data="$data,"'{"{'$elements'}":"'$value'"}'
 done
-echo '{"data":[{"disco": [{"{#DISK}":"'$disk'"},{"{#MODEL}": "'$device_model'"},{"{#SERIAL}": "'$serial_number'"},{"{#CAPACITY}": "'$disk_capacity'"},]},{"parameters": ['${data#,}']}]}' > /etc/zabbix/zabbix_agentd.d/zabbix-disk-performance/$disk.txt
+echo '{"data":[{"disco": [{"{#DISK}":"'$disk'"},{"{#MODEL}": "'$device_model'"},{"{#SERIAL}": "'$serial_number'"},{"{#CAPACITY}": "'$disk_capacity'"},]},{"parameters": ['${data#,}']}]}' >> /etc/zabbix/zabbix_agentd.d/zabbix-disk-performance/disks
